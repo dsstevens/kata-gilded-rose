@@ -28,22 +28,11 @@ class GildedRose {
     item.daysRemaining = item.daysRemaining - 1;
   }
   updateRegularItem(item) {
-    if (item.quality > 0) {
-      item.quality = item.quality - 1;
-    }
-    if (item.name != 'Hammer') {
-      item.daysRemaining = item.daysRemaining - 1;
-    }
-    if (item.daysRemaining < 0) {
-      if (item.name != 'Aged Cheddar') {
-        if (item.name != 'Concert Tickets') {
-          if (item.quality > 0) {
-            if (item.name != 'Hammer') {
-              item.quality = item.quality - 1;
-            }
-          }
-        }
-      }
+    item.daysRemaining = item.daysRemaining - 1;
+    if (item.daysRemaining > 0) {
+      item.quality = Math.max(item.quality -1, 0)
+    } else {
+      item.quality = Math.max(item.quality -2, 0)
     }
   }
 
