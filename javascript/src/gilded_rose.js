@@ -6,12 +6,11 @@ class GildedRose {
   }
 
   agedCheddar(item) {
-    if (item.quality < 50) {
-      item.quality = item.quality + 1;
-    }
     item.daysRemaining = item.daysRemaining - 1;
-    if (item.daysRemaining < 0 && item.quality < 50) {
-      item.quality = item.quality + 1;
+    if (item.daysRemaining > 0) {
+      item.quality = Math.min(item.quality + 1, 50);
+    } else {
+      item.quality = Math.min(item.quality + 2, 50);
     }
   }
 
